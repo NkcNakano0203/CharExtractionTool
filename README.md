@@ -16,7 +16,7 @@ UPM経由でのインストールはこちら↓
 生成が終わるとConsoleウィンドウに出力パスが記載されたログが表示されます。  
 保存先は`Assets\CharExtractionTool\TextFile\`です。
 
-# TextAssetCreatorでの使い方
+# FontAssetCreatorでの使い方
 FontAssetCreatorウィンドウの`Character Set`を`Characters from File`にした時に出てくる、  
 `Character File`へ生成したテキストファイルをアタッチします。  
 ![image](https://github.com/NkcNakano0203/CharExtractionTool/assets/95272840/4ae81b0e-4694-4490-b753-2d70776ba15f)  
