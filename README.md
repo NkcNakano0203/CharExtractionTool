@@ -1,0 +1,2 @@
+# CharExtractionTool
+string配列から重複ナシで文字を抽出してテキストファイルに出力するツール
