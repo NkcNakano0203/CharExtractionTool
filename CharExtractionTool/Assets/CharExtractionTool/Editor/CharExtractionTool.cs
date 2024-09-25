@@ -28,7 +28,7 @@ namespace CharExtractionTool
         private void OnDestroy()
         {
             stringList = stringArrayProperty.ToStringArray();
-            useStringList.useStringList = stringList;
+            useStringList.StringList = stringList;
         }
 
         void OnGUI()
@@ -38,7 +38,7 @@ namespace CharExtractionTool
             if (EditorGUI.EndChangeCheck())
             {
                 stringList = stringArrayProperty.ToStringArray();
-                useStringList.useStringList = stringList;
+                useStringList.StringList = stringList;
             }
 
             if (GUILayout.Button("テキストファイルを作成"))
@@ -53,7 +53,7 @@ namespace CharExtractionTool
         {
             useStringList = ScriptableSingleton<UseStringList>.instance;
             SerializedObject serializedObject = new SerializedObject(useStringList);
-            stringArrayProperty = serializedObject.FindProperty(nameof(UseStringList.useStringList));
+            stringArrayProperty = serializedObject.FindProperty(nameof(UseStringList.StringList));
         }
 
         private void CreateCharacter()
