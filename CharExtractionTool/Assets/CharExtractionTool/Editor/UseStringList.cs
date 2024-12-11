@@ -1,9 +1,8 @@
 ﻿using UnityEditor;
-using UnityEngine;
 
 namespace CharExtractionTool
 {
-    [CreateAssetMenu(fileName = "UseStringList", menuName = "Scriptable Objects/UseStringList")]
+    [FilePath("CharExtractionTool/UseStringList.json", FilePathAttribute.Location.ProjectFolder)]
     public class UseStringList : ScriptableSingleton<UseStringList>
     {
         public string FileName = "UseCharList";
