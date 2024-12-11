@@ -12,6 +12,7 @@ namespace CharExtractionTool
 
         private static UseStringList useStringList;
         private static SerializedProperty stringArrayProperty;
+        private static SerializedProperty fileNameProperty;
 
         [MenuItem("Tool/CharExtractionTool")]
         private static void Init()
@@ -25,38 +26,49 @@ namespace CharExtractionTool
             GetSerializedObjectInstance();
         }
 
+        // ウィンドウが閉じられたときにデータを保存する
         private void OnDestroy()
         {
             stringList = stringArrayProperty.ToStringArray();
             useStringList.StringList = stringList;
+            useStringList.FileName = fileNameProperty.stringValue;
         }
 
         void OnGUI()
         {
+            EditorGUILayout.PropertyField(fileNameProperty);
             EditorGUILayout.PropertyField(stringArrayProperty);
 
             if (EditorGUI.EndChangeCheck())
             {
                 stringList = stringArrayProperty.ToStringArray();
                 useStringList.StringList = stringList;
+                useStringList.FileName = fileNameProperty.stringValue;
             }
 
             if (GUILayout.Button("テキストファイルを作成"))
             {
                 stringList = stringArrayProperty.ToStringArray();
 
-                CreateCharacter();
+                CreateCharacter(fileNameProperty.stringValue);
             }
         }
 
+        /// <summary>
+        /// スクリプタブルオブジェクトからデータを取得
+        /// </summary>
         private static void GetSerializedObjectInstance()
         {
             useStringList = ScriptableSingleton<UseStringList>.instance;
             SerializedObject serializedObject = new SerializedObject(useStringList);
             stringArrayProperty = serializedObject.FindProperty(nameof(UseStringList.StringList));
+            fileNameProperty = serializedObject.FindProperty(nameof(UseStringList.FileName));
         }
 
-        private void CreateCharacter()
+        /// <summary>
+        /// ファイル生成
+        /// </summary>
+        private void CreateCharacter(string fileName)
         {
             // SortedSetを使い、使用する文字の重複を省く
             SortedSet<char> sortedSet = new();
@@ -80,7 +92,7 @@ namespace CharExtractionTool
             // 保存先のディレクトリ
             string savePath = Path.Combine(parentPath.FullName, "TextFile");
 
-            string path = Path.Combine(savePath, "UseCharecterList.txt");
+            string path = Path.Combine(savePath, fileName + ".txt");
             FileInfo fileInfo = new(path);
             // テキストファイルへ書き出し
             using (StreamWriter sw = fileInfo.CreateText())
