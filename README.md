@@ -21,3 +21,8 @@ FontAssetCreatorウィンドウの`Character Set`を`Characters from File`にし
 `Character File`へ生成したテキストファイルをアタッチします。  
 ![image](https://github.com/NkcNakano0203/CharExtractionTool/assets/95272840/4ae81b0e-4694-4490-b753-2d70776ba15f)  
 これで文字の被りがないのでデータ容量が少ないフォントアセットを作成することができます。
+
+# 2024/12/11 アップデート:ver1.1.0
+## 保存するテキストファイルに名前をつけれるようにしました 
+エディターの`FileName`を変更することで生成するテキストファイルの名前を変えることができます。
+![image](https://github.com/user-attachments/assets/214d34c5-7ad2-4a75-bb92-6f26336c9762)
